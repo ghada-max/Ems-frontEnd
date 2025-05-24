@@ -1,0 +1,19 @@
+.popup-container {
+  width: 300px; /* or whatever width you want */
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.button-group {
+  display: flex;
+  gap: 10px; /* space between buttons */
+  margin-top: 20px;
+}
+
+.button-group button {
+  flex: 1; /* each button takes equal space */
+  height: 40px;
+  font-size: 16px;
+}
