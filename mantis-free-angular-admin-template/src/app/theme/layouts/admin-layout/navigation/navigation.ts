@@ -71,30 +71,47 @@ export const NavigationItems: NavigationItem[] = [
     icon: 'icon-navigation',
     children: [
       {
-        id: 'typography',
-        title: 'Typography',
+        id: 'Employees',
+        title: 'Employees',
         type: 'item',
         classes: 'nav-item',
-        url: '/typography',
+        url: '/Employee',
         icon: 'font-size'
       },
       {
-        id: 'color',
-        title: 'Colors',
+        id: 'Department',
+        title: 'Department',
         type: 'item',
         classes: 'nav-item',
-        url: '/color',
+        url: '/department',
         icon: 'bg-colors'
       },
       {
-        id: 'tabler',
-        title: 'Tabler',
+        id: 'Attendances  ',
+        title: 'Attendances',
         type: 'item',
         classes: 'nav-item',
-        url: 'https://ant.design/components/icon',
+        url: '/attendance',
         icon: 'ant-design',
-        target: true,
-        external: true
+     
+      },
+      {
+        id: 'Leaves  ',
+        title: 'Leaves',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/leave',
+        icon: 'ant-design',
+     
+      },
+      {
+        id: 'Payrolls  ',
+        title: 'Payrolls',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/payroll',
+        icon: 'ant-design',
+     
       }
     ]
   },

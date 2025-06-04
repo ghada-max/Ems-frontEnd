@@ -21,16 +21,24 @@ const routes: Routes = [
         loadComponent: () => import('./demo/dashboard/default/default.component').then((c) => c.DefaultComponent)
       },
       {
-        path: 'typography',
-        loadComponent: () => import('./demo/component/basic-component/color/color.component').then((c) => c.ColorComponent)
+        path: 'department',
+        loadComponent: () => import('./demo/component/basic-component/department/department.component').then((c) => c.DepartmentComponent)
       },
       {
-        path: 'color',
-        loadComponent: () => import('./demo/component/basic-component/typography/typography.component').then((c) => c.TypographyComponent)
+        path: 'Employee',
+        loadComponent: () => import('./demo/component/basic-component/employee/employee.component').then((c) => c.EmployeeComponent)
       },
       {
-        path: 'sample-page',
-        loadComponent: () => import('./demo/others/sample-page/sample-page.component').then((c) => c.SamplePageComponent)
+        path: 'attendance',
+        loadComponent: () => import('./demo/component/basic-component/attendance/attendance.component').then((c) => c.AttendanceComponent)
+      },
+      {
+        path: 'leave',
+        loadComponent: () => import('./demo/component/basic-component/leave/leave.component').then((c) => c.LeaveComponent)
+      },
+      {
+        path: 'payroll',
+        loadComponent: () => import('./demo/component/basic-component/payroll/payroll.component').then((c) => c.PayrollComponent)
       }
     ]
   },

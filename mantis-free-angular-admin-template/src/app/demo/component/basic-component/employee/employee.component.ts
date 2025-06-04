@@ -1,53 +1,37 @@
-// Angular import
-
-import { Component, OnInit, TemplateRef, ViewChild, inject } from '@angular/core';
+import { Component, ViewChild, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { RouterLink, RouterOutlet } from '@angular/router';
 import { MatTableDataSource,MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { EmplBoxComponent } from 'src/app/demo/dialogBoxs/empl-box/empl-box.component';
 import { employee } from 'src/app/interfaces/employee';
 import { EmployeeService } from 'src/app/services/employee.service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EmplPopUpComponent } from 'src/app/demo/dialogBoxs/popups/empl-pop-up/empl-pop-up.component';
-// Angular import
-
-
-// project import
-
-
-// angular import
 import { CommonModule } from '@angular/common';
 
-// project import
 import tableData from 'src/fake-data/default-data.json';
 
-import { MonthlyBarChartComponent } from 'src/app/theme/shared/apexchart/monthly-bar-chart/monthly-bar-chart.component';
-import { IncomeOverviewChartComponent } from 'src/app/theme/shared/apexchart/income-overview-chart/income-overview-chart.component';
-import { AnalyticsChartComponent } from 'src/app/theme/shared/apexchart/analytics-chart/analytics-chart.component';
-import { SalesReportChartComponent } from 'src/app/theme/shared/apexchart/sales-report-chart/sales-report-chart.component';
-
-// icons
-import { IconService, IconDirective } from '@ant-design/icons-angular';
+import { IconService } from '@ant-design/icons-angular';
 import { FallOutline, GiftOutline, MessageOutline, RiseOutline, SettingOutline } from '@ant-design/icons-angular/icons';
-import { CardComponent } from 'src/app/theme/shared/components/card/card.component';
 import { BoxDialogComponent } from 'src/app/demo/dialogBoxs/box-dialog/box-dialog.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-default',
   imports: [MatTableModule,MatPaginatorModule,
     CommonModule,
-    CardComponent,
-    IconDirective,
-  ],
-  templateUrl: './typography.component.html',
-  styleUrl: './typography.component.scss'
-})
-export class TypographyComponent {
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
+    CommonModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatTooltipModule,
 
-  displayedColumns: string[] = ['id','name', 'email', 'department', 'contact','actions'];
+  ],
+  templateUrl: './employee.component.html',
+  styleUrl: './employee.component.scss'
+})
+export class EmployeeComponent {
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+    staus:boolean
+  displayedColumns: string[] = ['id','name', 'email', 'department','status', 'contact','actions'];
   dataSource = new MatTableDataSource<employee>();
   employeesList:employee[]=[]
   empl!: employee; // means: I will assign it later
@@ -89,7 +73,10 @@ export class TypographyComponent {
   ngOnInit()
   
   : void {
+    this.staus= true;
+
     this.getAllEmployees();
+
   }
   //emplServ=inject(EmployeeService)
 
@@ -102,6 +89,7 @@ export class TypographyComponent {
 
           name: emp.name,
           email: emp.email,
+          status:true,
           department: emp.departmentid,
           contact: emp.contact,
         }));

@@ -44,6 +44,7 @@ import { BoxDialogComponent } from 'src/app/demo/dialogBoxs/box-dialog/box-dialo
   templateUrl: './color.component.html',
   styleUrl: './color.component.scss'
 })
+
 export class ColorComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 

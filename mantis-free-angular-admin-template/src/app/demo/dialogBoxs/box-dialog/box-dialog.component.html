@@ -1,56 +1,84 @@
 
+<div class="container">
+  <div class="card my-5 p-4">
+    <div class="text-center mb-4">
+      <img
+        [src]="employeePhotoUrl || 'assets/images/default-profile.png'"
+        alt="Employee Photo"
+        class="rounded-circle"
+        style="width: 120px; height: 120px; object-fit: cover; border: 2px solid #ccc;"
+      />
+      <div class="mt-2">
+        <input type="file" (change)="onPhotoSelected($event)" accept="image/*" />
+      </div>
+    </div>
 
-
-      <!-- Employee Form Card -->
-      <div class="card my-5">
-        <div class="card-body">
-          <div class="d-flex justify-content-between align-items-end mb-4">
-            <h5 class="mb-0"><b>change data in the system,Be careful! Employee to the system</b></h5>
-          </div>
-
-          <form [formGroup]="employeeForm" >
-            <div class="form-group mb-3">
-              <label for="name">Name</label>
-              <input type="text" id="name" class="form-control" placeholder="Name" formControlName="name" />
-            </div>
-
-            <div class="form-group mb-3">
-              <label for="email">Email</label>
-              <input type="email" id="email" class="form-control" placeholder="Email" formControlName="email" />
-            </div>
-
-            <div class="form-group mb-3">
-              <label for="departmentid">Department</label>
-              <select id="departmentid" formControlName="departmentid" class="form-control">
-                <option value="1">Customer Support</option>
-                <option value="2">HR</option>
-                <option value="3">Sales</option>
-                <option value="4">IT</option>
-                <option value="5">Marketing</option>
-              </select>
-            </div>
-
-            <div class="form-group mb-3">
-              <label for="contact">Contact</label>
-              <input type="tel" id="contact" class="form-control" placeholder="Contact" formControlName="contact" />
-            </div>
-
-       
-          </form>
+    <form [formGroup]="employeeForm">
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="name">Name</label>
+          <input type="text" id="name" class="form-control" placeholder="Name" formControlName="name" />
+        </div>
+        <div class="col-md-6">
+          <label for="email">Email</label>
+          <input type="email" id="email" class="form-control" placeholder="Email" formControlName="email" />
         </div>
       </div>
 
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            placeholder="Password"
+            formControlName="password"
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="confirmPassword">Confirm Password</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            class="form-control"
+            placeholder="Confirm Password"
+            formControlName="confirmPassword"
+          />
+        </div>
+      </div>
+
+      <div *ngIf="employeeForm.hasError('passwordMismatch') && employeeForm.touched" class="text-danger mb-3">
+        Passwords do not match.
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="departmentid">Department</label>
+          <select id="departmentid" formControlName="departmentid" class="form-control">
+            <option value="1">Customer Support</option>
+            <option value="2">HR</option>
+            <option value="3">Sales</option>
+            <option value="4">IT</option>
+            <option value="5">Marketing</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label for="contact">Contact</label>
+          <input type="tel" id="contact" class="form-control" placeholder="Contact" formControlName="contact" />
+        </div>
+      </div>
+    </form>
+  </div>
+
       <!-- Optional Login Section (if needed) -->
-      <div class="card my-3">
-        <div class="card-body">
-          <div class="form-group mb-3">
-            <div class="d-flex mt-1 justify-content-between">
-              <div class="form-check">
-                <input class="form-check-input input-primary" type="checkbox" id="customCheckc1" checked />
-                <label class="form-check-label text-muted" for="customCheckc1">Keep me sign in</label>
+        <!-- Optional Login Section (if needed) -->
+        <div class="card my-3">
+          <div class="card-body">
+            <div class="form-group mb-3">
+              <div class="d-flex mt-1 justify-content-between">
+               
               </div>
-              <h5 class="text-secondary f-w-400"><a href="javascript:">Forgot Password?</a></h5>
-            </div>
 
             <div class="d-grid mt-4">
               <button type="button"  (click)="OnAddEmployee()"  class="btn btn-primary"[disabled]="!isEditing"
@@ -60,7 +88,7 @@
             <div class="d-grid mt-4">
                <button type="button" class="btn btn-primary" (click)="OnEditEmployee()"   [disabled]="isEditing"
                 [ngClass]="{ 'mat-disabled': isEditing }">Edit</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>

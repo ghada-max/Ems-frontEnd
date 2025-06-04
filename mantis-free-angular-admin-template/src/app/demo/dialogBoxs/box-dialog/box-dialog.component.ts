@@ -125,5 +125,17 @@ export class BoxDialogComponent  {  isEditing: true;
       window.location.reload();
   
     }
+    employeePhotoUrl: string | ArrayBuffer | null = null;
+
+onPhotoSelected(event: Event): void {
+  const file = (event.target as HTMLInputElement).files?.[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.employeePhotoUrl = reader.result;
+    };
+    reader.readAsDataURL(file);
+  }
+}
   }
   

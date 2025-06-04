@@ -1,0 +1,65 @@
+<div class="mb-3">
+    <input type="text" style="max-width: 250px;" class="form-control" placeholder="Search employee..." (input)="applyFilter($event)" />
+  </div>
+  <div class="container">
+<div class="card tbl-card">
+    <div class="table-responsive">
+        <table style="width: 100%;" class="table table-hover mb-0">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>employee</th>
+                    <th>clockIn</th>
+                    <th>ClockOut</th>
+                    <th>Status</th>
+                    <th>MarkedBy</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of filteredEmployeesList">
+                    <td><a href="javascript:" class="text-muted">{{ data.id }}</a></td>
+                    <td>{{ data.name }}</td>
+             
+              <!-- Inside *ngFor row -->
+              <td>
+                <div 
+                  class="circle" 
+                  [ngStyle]="{
+                    'background-color': employeeClockStatus[data.id]?.clockInDone ? 'gray' : 'green'
+                  }"
+              
+                  (click)="markClockIn(data.id)" 
+                  title="Clock In"
+                ></div>
+              </td>
+            
+              <!-- Clock Out (Orange Circle) -->
+              <td>
+                <div 
+                  class="circle" 
+                  [ngStyle]="{
+                    'background-color': employeeClockStatus[data.id]?.clockOutDone ? 'gray' : 'orange'
+                  }"
+                  (click)="markClockOut(data.id)" 
+                  title="Clock Out"
+                ></div>
+              </td>
+
+
+              <td class="text-end">
+                <select class="form-select" [(ngModel)]="employeeStatusMap[data.id]" name="attendanceStatus-{{data.id}}">
+                  <option value="PRESENT">On Time</option>
+                  <option value="LATE">Late</option>
+                  <option value="ABSENT">Absent</option>
+                </select>
+              </td>
+                    <td >{{ markedBy }}</td>
+ 
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+</div>

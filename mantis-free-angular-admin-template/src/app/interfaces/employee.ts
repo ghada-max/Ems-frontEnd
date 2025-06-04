@@ -3,6 +3,7 @@ export interface employee {
     name: string
     email: string
     departmentid: number
+    status:boolean
     contact: number
 
 }
