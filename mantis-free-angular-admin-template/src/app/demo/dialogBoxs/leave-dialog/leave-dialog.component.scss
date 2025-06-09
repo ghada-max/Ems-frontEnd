@@ -1,0 +1,15 @@
+/* styles.css */
+
+.container {
+     /* Responsive max width */
+    margin: 20px auto;  /* Center horizontally with margin top */
+  }
+  
+  .card {
+    background-color: #f8f8f8;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+  }
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+  }

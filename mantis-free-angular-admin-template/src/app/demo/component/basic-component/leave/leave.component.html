@@ -34,8 +34,9 @@
 
               <td>{{ markedBy }}</td>
               <td>
-                <button type="button" class="btn btn-success" style="margin-right: 5px;">Create</button>
-                <button type="button" class="btn btn-info">Leaves Info</button>
+                <button type="button"   (click)="onCreateClick(data)"
+                 class="btn btn-success" style="margin-right: 5px;">Create</button>
+                <button type="button" (click)="TapleavesInfo(data.id)" class="btn btn-info">Leaves Info</button>
               </td>
 
 
@@ -55,27 +56,27 @@
       <div class="card-body">
         <div class="row mb-3">
           <div class="col-md-6">
-            <label class="form-label" for="Id">Id</label>
-            <input type="number" class="form-control" id="startDate" placeholder="Id" />
+            <label class="form-label label-bold" for="Id">Id</label>
+            <input type="number" class="form-control"   [(ngModel)]="selectedId"   id="startDate" placeholder="Id" />
           </div>
           <div class="col-md-6">
-            <label class="form-label" for="Employee">Employee</label>
-            <input type="text" class="form-control" id="Employee" placeholder="Employee" />
+            <label class="form-label label-bold" for="Employee">Employee</label>
+            <input type="text" class="form-control" [(ngModel)]="selectedName" id="Employee" placeholder="Employee" />
           </div>
         </div>
         <div class="row mb-3">
           <div class="col-md-6">
-            <label class="form-label" for="startDate">Start Date</label>
+            <label class="form-label label-bold" for="startDate">Start Date</label>
             <input type="date" class="form-control" id="startDate" placeholder="Start Date" />
           </div>
           <div class="col-md-6">
-            <label class="form-label" for="endDate">End Date</label>
+            <label class="form-label label-bold" for="endDate">End Date</label>
             <input type="date" class="form-control" id="endDate" placeholder="End Date" />
           </div>
         </div>
         
         <div class="form-group mb-3">
-          <label class="form-label" for="details">Details</label>
+          <label class="form-label label-bold" for="details">Details</label>
           <input type="text" class="form-control" id="details" placeholder="Details" />
         </div>
         

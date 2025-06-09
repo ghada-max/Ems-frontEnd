@@ -16,6 +16,11 @@ import { FallOutline, GiftOutline, MessageOutline, RiseOutline, SettingOutline }
 import { CardComponent } from 'src/app/theme/shared/components/card/card.component';
 import { employee } from 'src/app/interfaces/employee';
 import { EmployeeService } from 'src/app/services/employee.service';
+import { FormsModule } from '@angular/forms';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { LeaveDialogComponent } from 'src/app/demo/dialogBoxs/leave-dialog/leave-dialog.component';
+import { LeaveService } from 'src/app/services/leave.service';
+import { Leave } from 'src/app/interfaces/leave';
 
 @Component({
   selector: 'app-leave',
@@ -27,17 +32,16 @@ import { EmployeeService } from 'src/app/services/employee.service';
     IncomeOverviewChartComponent,
     AnalyticsChartComponent,
     SalesReportChartComponent,
-  ],  templateUrl: './leave.component.html',
+    FormsModule
+  ], templateUrl: './leave.component.html',
   styleUrl: './leave.component.scss'
 })
 export class LeaveComponent {
-  markedBy: string = "HR sofia"
-
+  markedBy: string = "M'henni Ghada"
   employeesList: employee[] = []
   empl!: employee; // means: I will assign it later
 
   private iconService = inject(IconService);
-
   // constructor
   constructor() {
     this.iconService.addIcon(...[RiseOutline, FallOutline, SettingOutline, GiftOutline, MessageOutline]);
@@ -121,17 +125,17 @@ export class LeaveComponent {
 
   ngOnInit()
 
-  : void {
+    : void {
 
-  this.getAllEmployees();
-
-
-}
+    this.getAllEmployees();
 
 
+  }
 
 
-  emplServ=inject(EmployeeService)
+
+
+  emplServ = inject(EmployeeService)
 
 
   filteredEmployeesList: employee[] = []; // For displaying after filter
@@ -156,7 +160,7 @@ export class LeaveComponent {
           status: true,
           department: emp.departmentid,
           contact: emp.contact,
-          markedBy: "HR sofia",
+          markedBy: "M'henni Ghada",
 
         }));
         this.employeesList = filteredEmployees;
@@ -169,21 +173,55 @@ export class LeaveComponent {
     });
   }
 
+  selectedId: number;
+  selectedName: string;
+  onCreateClick(employee: any): void {
+    this.selectedId = employee.id;
+    this.selectedName = employee.name;
+  }
 
-  CreateLeave(){
+  dialogRef!: MatDialogRef<any>;
+  readonly dialog = inject(MatDialog)
+
+
+
+  leaveSer = inject(LeaveService)
+  leaveListById: Leave[] = []
+  getLeaveById(id: number) {
+    this.leaveSer.getLeaveById(id).subscribe(
+      (response: Leave[]) => {
+        this.leaveListById = response;
+
+        // Open dialog after data is received
+        const dialogRef = this.dialog.open(LeaveDialogComponent, {
+          data: {
+            id: id,
+            leaveListById: this.leaveListById
+          },
+          maxWidth: '2500px',
+          maxHeight: '600px',
+          panelClass: 'full-width-dialog'
+        });
+
+        console.log(this.leaveListById);
+      },
+      (err) => {
+        console.error('Error fetching leaves:', err);
+      }
+    );
+  }
+
+  TapleavesInfo(id: number) {
+    this.getLeaveById(id); 
+  }
+
+
+  submit() {
 
   }
 
-  LeaveInfo(){
+  Cancel() {
 
   }
-
-submit(){
-
-}
-
-Cancel(){
-  
-}
 }
 

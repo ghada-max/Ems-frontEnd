@@ -34,7 +34,7 @@ export class AnalyticsChartComponent {
           borderRadius: 4
         }
       },
-      colors: ['#FFB814'],
+      colors: ['#FF0000'] , // Bright Red
       stroke: {
         curve: 'smooth',
         width: 1.5
@@ -45,7 +45,7 @@ export class AnalyticsChartComponent {
       },
       series: [
         {
-          data: [58, 90, 38, 83, 63, 75, 35, 55]
+          data: [58, 0, 0, 20, 0, 75, 35, 0]
         }
       ],
       xaxis: {

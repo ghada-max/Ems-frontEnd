@@ -136,6 +136,7 @@ export class AttendanceComponent {
         const dialogRef = this.dialog.open(SimplePopUpsComponent, {
           data: { msg: this.msg }
         });
+    
   
         setTimeout(() => {
           dialogRef.close();

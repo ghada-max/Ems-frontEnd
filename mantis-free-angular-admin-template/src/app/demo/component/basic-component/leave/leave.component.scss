@@ -110,3 +110,12 @@ form i {
   top: 203px;
   right: 45px;
 }
+.label-bold {
+  font-weight: 700; /* or use 'bold' */
+}
+.full-width-dialog {
+  margin: 0;
+ 
+  padding: 0 !important;
+  border-radius: 0; /* si tu veux sans arrondis */
+}
